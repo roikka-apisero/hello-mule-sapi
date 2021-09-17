@@ -10,7 +10,10 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="hello-mule-sapiFlow" doc:id="cf10178e-acdf-4671-b433-d85d74ac6866" >
 		<http:listener doc:name="Listener" doc:id="ae291baf-2372-4f17-9821-0d615ce21cef" config-ref="HTTP_Listener_config" path="/hello"/>
 		<logger level="INFO" doc:name="Logger" doc:id="373850d5-c71d-4efa-bbd0-d5e7d0c2665a" message='#["Hello World"]'/>
-		<choice doc:name="Choice" doc:id="e4a9fee0-a0f9-4dc8-baf7-dc4ee818fa5f" >
+		<choice doc:name="Choice" doc:id="1f49886f-db98-4b9d-8fe6-bc53f6806dfd" >
+			<when expression='#[attributes.queryParams.country == "US"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="095a2eef-de2b-404c-aafc-e35567e63542" message='#["COuntry is US"]'/>
+    <choice doc:name="Choice" doc:id="e4a9fee0-a0f9-4dc8-baf7-dc4ee818fa5f" >
 			<when expression="#[attributes.queryParams.country == 'AUS']">
 				<logger level="INFO" doc:name="Logger" doc:id="09c61de9-5525-401f-b98a-3260d68b3cf8" message="#['Country is AUS']"/>
 			</when>
