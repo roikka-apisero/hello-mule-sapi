@@ -12,11 +12,15 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<logger level="INFO" doc:name="Logger" doc:id="373850d5-c71d-4efa-bbd0-d5e7d0c2665a" message='#["Hello World"]'/>
 		<choice doc:name="Choice" doc:id="1f49886f-db98-4b9d-8fe6-bc53f6806dfd" >
 			<when expression='#[attributes.queryParams.country == "US"]'>
-				<logger level="INFO" doc:name="Logger" doc:id="095a2eef-de2b-404c-aafc-e35567e63542" message='#["COuntry is US"]'/>
-    <choice doc:name="Choice" doc:id="e4a9fee0-a0f9-4dc8-baf7-dc4ee818fa5f" >
-			<when expression="#[attributes.queryParams.country == 'AUS']">
-				<logger level="INFO" doc:name="Logger" doc:id="09c61de9-5525-401f-b98a-3260d68b3cf8" message="#['Country is AUS']"/>
+				<logger level="INFO" doc:name="Logger" doc:id="c5284acb-7fa6-4108-a181-84cea0b3f0c8" message='#["Country US"]'/>
+	</when>
+			<when expression='#[attributes.queryParams.country == "AUS"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="28b55795-bb3a-4034-aab1-4c38de069b85" message='#["Country AUS"]'/>
 			</when>
+			<otherwise>
+				<logger level="INFO" doc:name="Logger" doc:id="e80d18e5-8922-4550-9074-a0f3a0ae8d18" message='#["No COuntry has been selected"]'/>
+			</otherwise>
 		</choice>
+		<logger level="INFO" doc:name="Logger" doc:id="8bc51f0c-fd0e-4e7e-9c77-4a95bfc9c21c" message="#[payload]"/>
 	</flow>
 </mule>
